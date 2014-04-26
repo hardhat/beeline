@@ -1,5 +1,14 @@
 game.resources = [
 
+	// game font
+    {name: "32x32_font",          type:"image", src: "data/img/font/32x32_font.png"},
+    
+    // Title Screen
+    {name: "title_screen",          type:"image", src: "data/img/gui/title_screen.jpg"},
+    
+    // Credits Screen
+    {name: "creds_screen",          type:"image", src: "data/img/gui/Douglas_Adams.jpg"},
+
 	/* Graphics. 
 	 * @example
 	 * {name: "example", type:"image", src: "data/img/example.png"},

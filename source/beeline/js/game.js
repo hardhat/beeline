@@ -23,6 +23,7 @@ var game = {
 			me.plugin.register.defer(this, debugPanel, "debug");
 		});
 	}
+	
 
 	// Initialize the audio.
 	me.audio.init("mp3,ogg");
@@ -41,8 +42,8 @@ var game = {
 	"loaded" : function () {
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.PLAY, new game.PlayScreen());
-
-		// Start the game.
-		me.state.change(me.state.PLAY);
+		me.state.set(me.state.CREDITS, new game.CreditScreen());
+		// Go to title screen.
+		me.state.change(me.state.MENU);
 	}
 };
