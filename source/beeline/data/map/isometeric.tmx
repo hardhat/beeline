@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="isometric" width="20" height="20" tilewidth="128" tileheight="64">
  <tileset firstgid="1" name="isometricmap" tilewidth="128" tileheight="64">
-  <image source="F:/tojam9/beeline/data/img/isometricmap.png" width="768" height="768"/>
+  <image source="../img/isometricmap.png" width="768" height="768"/>
  </tileset>
  <layer name="Tile Layer 1" width="20" height="20">
   <data encoding="base64">
