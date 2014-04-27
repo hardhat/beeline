@@ -13,6 +13,8 @@ game.resources = [
 	 * @example
 	 * {name: "example", type:"image", src: "data/img/example.png"},
 	 */
+	{name: "isometricmap", type:"image", src: "data/img/isometric.png"},
+
 
 	/* Atlases 
 	 * @example
@@ -24,6 +26,7 @@ game.resources = [
 	 * {name: "example01", type: "tmx", src: "data/map/example01.tmx"},
 	 * {name: "example01", type: "tmx", src: "data/map/example01.json"},
  	 */
+	{name: "isometric", type: "tmx", src: "data/map/isometric.tmx"},
 
 	/* Background music. 
 	 * @example
@@ -34,4 +37,6 @@ game.resources = [
 	 * @example
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/"}
 	 */
+	{name: "Click", type: "audio", src: "data/sfx/"}
+
 ];
