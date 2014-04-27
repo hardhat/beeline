@@ -4,6 +4,7 @@ game.PlayScreen = me.ScreenObject.extend({
 	 */
 	onResetEvent: function() {
 		// load a level
+		me.audio.playTrack("beeline_bgm", 0.5);
 		me.levelDirector.loadLevel("isometric");
 
 		// reset the score
@@ -21,5 +22,6 @@ game.PlayScreen = me.ScreenObject.extend({
 	onDestroyEvent: function() {
 		// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
+		me.audio.stopTrack();
 	}
 });

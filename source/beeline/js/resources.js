@@ -28,10 +28,9 @@ game.resources = [
  	 */
 	{name: "isometric", type: "tmx", src: "data/map/isometric.tmx"},
 
-	/* Background music. 
-	 * @example
-	 * {name: "example_bgm", type: "audio", src: "data/bgm/"},
-	 */	
+//	Background music. 
+	{name: "beeline_bgm", type: "audio", src: "data/bgm/"}
+	 	
 
 	/* Sound effects. 
 	 * @example
