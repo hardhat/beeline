@@ -26,15 +26,15 @@ game.HUD.Container = me.ObjectContainer.extend({
 		this.name = "HUD";
 		
 		// add our child score object at the top left corner
-		this.addChild(new game.HUD.ScoreItem(5, 5));
+		this.addChild(new game.HUD.InfoItem(5, 5));
 	}
 });
 
 
 /** 
- * a basic HUD item to display score
+ * a basic HUD item to display score, hive cap, idle bees, exploring bees, attacking bees
  */
-game.HUD.ScoreItem = me.Renderable.extend({	
+game.HUD.InfoItem = me.Renderable.extend({	
 	/** 
 	 * constructor
 	 */
@@ -44,8 +44,15 @@ game.HUD.ScoreItem = me.Renderable.extend({
 		// (size does not matter here)
 		this.parent(new me.Vector2d(x, y), 10, 10); 
 		
-		// local copy of the global score
+		// create a font
+		this.font = new me.Font("beefont", 32, "white", "right");
+		
+		// local copy of the global info
 		this.score = -1;
+		this.cap = 4;
+		this.idle = -1;
+		this.explore = -1;
+		this.attack = -1;
 
 		// make sure we use screen coordinates
 		this.floating = true;
@@ -60,6 +67,18 @@ game.HUD.ScoreItem = me.Renderable.extend({
 		if (this.score !== game.data.score) {	
 			this.score = game.data.score;
 			return true;
+		} else if (this.cap !== game.data.cap) {
+			this.cap = game.data.cap;
+			return true;
+		} else if (this.idle !== game.data.idle) {
+			this.idle = game.data.idle;
+			return true;
+		} else if (this.explore !== game.data.explore) {
+			this.explore = game.data.explore;
+			return true;
+		} else if (this.attack !== game.data.attack) {
+			this.attack = game.data.attack;
+			return true;
 		}
 		return false;
 	},
@@ -68,7 +87,7 @@ game.HUD.ScoreItem = me.Renderable.extend({
 	 * draw the score
 	 */
 	draw : function (context) {
-		// draw it baby !
+		this.font.draw (context, "Score: " + game.data.score, this.pos.x, this.pos.y);
 	}
 
 });

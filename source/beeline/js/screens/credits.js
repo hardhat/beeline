@@ -8,7 +8,7 @@ game.CreditScreen = me.ScreenObject.extend({
 		me.game.world.addChild(
 		    new me.SpriteObject (
 		        0,0, 
-		        me.loader.getImage('creds_screen')
+		        me.loader.getImage('info_screen')
 		    ),
 		    1
 		);
@@ -26,14 +26,14 @@ game.CreditScreen = me.ScreenObject.extend({
 			    },
 			     
 			    draw : function (context) {
-			        this.font.draw (context, "Credits:", 20, 20);
-			        this.font.draw (context, "Programmers:", 33, 65);
+			        this.font.draw (context, "Credits:", 360, 60);
+			        this.font.draw (context, "Programmers:", 153, 105);
 			        this.font.setFont("beeFont", 22, "#fff");
-			        this.font.draw (context, "Dale Wick and Daniel Sutherland", 45, 95);
-			        this.font.draw (context, "Graphics:", 33, 135);
-			        this.font.draw (context, "Melissa Davidson, Youkie Koizumi, Jeffrey Wick", 45, 165);
-			        this.font.draw (context, "Sound:", 33, 205);
-			        this.font.draw (context, "Andrew Kropel, Marty Bernie", 45, 235);
+			        this.font.draw (context, "Dale Wick and Daniel Sutherland", 165, 135);
+			        this.font.draw (context, "Graphics:", 153, 175);
+			        this.font.draw (context, "Melissa Davidson, Youkie Koizumi, Jeffrey Wick", 165, 205);
+			        this.font.draw (context, "Sound:", 153, 245);
+			        this.font.draw (context, "Andrew Kropel, Marty Bernie", 165, 275);
 			        menu = this.font.measureText(context, menub);
 			        this.font.draw (context, "MENU", 20, 440);
 			    },

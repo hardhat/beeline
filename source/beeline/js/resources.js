@@ -6,17 +6,14 @@ game.resources = [
     // Title Screen
     {name: "title_screen",          type:"image", src: "data/img/gui/title_screen.jpg"},
     
-    // Credits Screen
-    {name: "creds_screen",          type:"image", src: "data/img/gui/creds_screen.jpg"},
+    // Credits and Instructions Screen
+    {name: "info_screen",          type:"image", src: "data/img/gui/info_screen.png"},
     
-    // Instructions Screen
-    {name: "instrn_screen",          type:"image", src: "data/img/gui/instrn_screen.jpg"},
-
 	/* Graphics. 
 	 * @example
 	 * {name: "example", type:"image", src: "data/img/example.png"},
 	 */
-	{name: "isometricmap", type:"image", src: "data/img/isometric.png"},
+	{name: "isometricmap", type:"image", src: "data/img/isometricmap.png"},
 
 
 	/* Atlases 
@@ -40,6 +37,6 @@ game.resources = [
 	 * @example
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/"}
 	 */
-	{name: "Click", type: "audio", src: "data/sfx/"}
+//	{name: "Click", type: "audio", src: "data/sfx/"}
 
 ];

@@ -8,7 +8,7 @@ game.InstructionsScreen = me.ScreenObject.extend({
 			me.game.world.addChild(
 			    new me.SpriteObject (
 			        0,0, 
-			        me.loader.getImage('instrn_screen')
+			        me.loader.getImage('info_screen')
 			    ),
 			    1
 			);
@@ -26,8 +26,8 @@ game.InstructionsScreen = me.ScreenObject.extend({
 				    },
 				     
 				    draw : function (context) {
-				        this.font.draw (context, "Instructions:", 20, 20);
-				        this.font.draw (context, "Just play the game, I know you can do it!", 33, 65);
+				        this.font.draw (context, "Instructions:", 330, 60);
+				        this.font.draw (context, "Just play the game, I know you can do it!", 153, 115);
 				        menu = this.font.measureText(context, menub);
 				        this.font.draw (context, "MENU", 20, 440);
 				    },

@@ -5,7 +5,15 @@ var game = {
 	// an object where to store game information
 	data : {
 		// score
-		score : 0
+		score : 0,
+		// hive cap
+		hcap : 5,
+		// idle bees
+		idle : 0,
+		// exploring bees
+		explore : 0,
+		// attacking bees
+		attack : 0
 	},
 	
 	
