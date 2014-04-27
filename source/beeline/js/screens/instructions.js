@@ -22,14 +22,15 @@ game.InstructionsScreen = me.ScreenObject.extend({
 				    },
 	
 				    update : function (dt) {
-				        return true;
+				        return false;
 				    },
 				     
 				    draw : function (context) {
 				        this.font.draw (context, "Instructions:", 330, 60);
-				        this.font.draw (context, "Just play the game, I know you can do it!", 153, 115);
-				        menu = this.font.measureText(context, menub);
 				        this.font.draw (context, "MENU", 20, 440);
+				        menu = this.font.measureText(context, menub);
+				        this.font = new me.Font("Comic Sans MS", 16, "#fff");
+				        this.font.draw (context, "	Your mission is to pollinate all of the flowers on the level. The bears \nare after you! So defend your honey and keep the bears from spoiling \neverything. \n\n	Tap on the map to assign an idle bee to explore and reveal the map. \nTap on flowers to assign a bee to pollinate. Flowers require 5 trips or \n5 bees to fully pollinate. Tap on the bear to sacrifice a bee on defense, \nand trying to fill his annoyed meter and scare him away. \n\n	Across the top there is the number of available bees, hive capacity, \nnumber of idle, exploring, harvesting and attacking bees. Also the \namount of honey that you have.", 153, 115);
 				    },
 				})), 2);
 				

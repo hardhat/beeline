@@ -33,9 +33,9 @@ game.TitleScreen = me.ScreenObject.extend({
                 this.font = new me.Font("beeFont", 32, "white");
                  
                  // a tween to animate the arrow
-                this.scrollertween = new me.Tween(this).to({scrollerpos: -600 }, 10000).onComplete(this.scrollover.bind(this)).start();
+                this.scrollertween = new me.Tween(this).to({scrollerpos: -800 }, 10000).onComplete(this.scrollover.bind(this)).start();
          
-                this.scroller = "TEAM SUSHI - TOJam 9 - 2014                             ";
+                this.scroller = "A TEAM SUSHI PRODUCTION ~ TOJam 9 ~ 2014                             ";
                 this.scrollerpos = 800;
             },
              
@@ -43,7 +43,7 @@ game.TitleScreen = me.ScreenObject.extend({
             scrollover : function() {
                 // reset to default value
                 this.scrollerpos = 800;
-                this.scrollertween.to({scrollerpos: -600 }, 10000).onComplete(this.scrollover.bind(this)).start();
+                this.scrollertween.to({scrollerpos: -800 }, 20000).onComplete(this.scrollover.bind(this)).start();
             },
          
             update : function (dt) {
