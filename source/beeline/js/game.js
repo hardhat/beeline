@@ -51,6 +51,8 @@ var game = {
 	
 		me.pool.register("HiveEntity", game.HiveEntity);
 		me.pool.register("BearEntity", game.BearEntity);
+		me.pool.register("FlowerEntity", game.FlowerEntity);
+		me.sys.gravity = 0;
 	
 	
 		me.state.set(me.state.MENU, new game.TitleScreen());
