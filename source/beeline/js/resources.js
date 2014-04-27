@@ -43,6 +43,16 @@ game.resources = [
 	 * @example
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/"}
 	 */
-//	{name: "Click", type: "audio", src: "data/sfx/"}
+	{name: "Click", type: "audio", src: "data/sfx/"},
+	
+	{name: "Bear_Harvest", type: "audio", src: "data/sfx/"},
+	
+	{name: "Bear_Near", type: "audio", src: "data/sfx/"},
+	
+	{name: "Bear_Retreat", type: "audio", src: "data/sfx/"},
+	
+	{name: "Gardener_Bee", type: "audio", src: "data/sfx/"},
+	
+	{name: "Soldier_Bee", type: "audio", src: "data/sfx/"}
 
 ];
