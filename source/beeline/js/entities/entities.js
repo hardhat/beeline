@@ -24,45 +24,6 @@ game.HiveEntity = me.ObjectEntity.extend({
 	}
 });
 
-/* --------------------------
-collectable flower 
--------------------------- */
-game.FlowerEntity = me.CollectableEntity.extend({
-	init: function(x,y,settings) {
-		settings.image="flower100";
-		settings.width=128;
-		settings.height=128;
-
-		// call parent constructor
-		this.parent(x,y,settings);
-		this.energy=5;
-		this.delay=0;
-	}
-
-	update: function(dx) {
-		if(this.delay>0) {
-			this.delay-=dx;
-			if(this.delay<0) this.delay=0;
-		}
-	}
-
-	onCollision: function() {
-		if(this.delay>0) return;
-
-		if(this.energy>0) {
-			this.energy-=1;
-			flower[]={"flower0","flower20","flower40","flower60","flower80","flower100"};
-			this.image=flower[this.energy];
-			this.delay=1;
-			game.honey++;
-		}
-		if(this.energy==0) {
-			this.collidable = false;
-			me.game.world.removeChild( this);
-		}
-	}
-});
-
 
 /* --------------------------
 an enemy Entity
@@ -140,5 +101,52 @@ game.BearEntity = me.ObjectEntity.extend({
         }
         return false;
     }
+});
+
+
+/* --------------------------
+collectable flower 
+-------------------------- */
+game.FlowerEntity = me.CollectableEntity.extend({
+	init: function(x,y,settings) {
+		settings.image="flower100";
+		settings.width=128;
+		settings.height=128;
+
+		// call parent constructor
+		this.parent(x,y,settings);
+		this.energy=5;
+		this.delay=0;
+	},
+
+	update: function(dx) {
+		if(this.delay>0) {
+			this.delay-=dx;
+			if(this.delay<0) this.delay=0;
+		}
+	},
+
+	onCollision: function() {
+		if(this.delay>0) return;
+
+		if(this.energy>0) {
+			this.energy-=1;
+			flower[0]="flower0";
+			flower[1]="flower20";
+			flower[2]="flower40";
+			flower[3]="flower60";
+			flower[4]="flower80";
+			flower[5]="flower100";
+
+
+			this.image=flower[this.energy];
+			this.delay=1;
+			game.honey++;
+		}
+		if(this.energy==0) {
+			this.collidable = false;
+			me.game.world.removeChild( this);
+		}
+	}
 });
 
