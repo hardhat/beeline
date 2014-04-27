@@ -11,7 +11,8 @@ game.CreditScreen = me.ScreenObject.extend({
 		        me.loader.getImage('info_screen')
 		    ),1
 		);
-		
+		me.game.world.addChild(new me.SpriteObject(650,196, me.loader.getImage("logo")), 2);
+		me.game.world.addChild(new me.SpriteObject(650,280, me.loader.getImage("goat")), 3);
 		me.game.world.addChild(new (me.Renderable.extend ({
 			    // constructor
 			    init : function() {
@@ -21,6 +22,7 @@ game.CreditScreen = me.ScreenObject.extend({
 			    },
 
 			    update : function (dt) {
+			    	
 			        return false;
 			    },
 			     
@@ -38,8 +40,7 @@ game.CreditScreen = me.ScreenObject.extend({
 			        this.font.draw (context, "Melissa Davidson, Youkie Koizumi, Jeffrey Wick", 165, 205);
 			        this.font.draw (context, "Andrew Kropel, Marty Bernie", 165, 275);
 			    },
-			})),2);
-			
+			})),4);	
 		me.input.bindKey(me.input.KEY.ENTER, "enter", true);
 		me.input.bindPointer(me.input.mouse.LEFT, me.input.KEY.ENTER);
 		this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
