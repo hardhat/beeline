@@ -15,12 +15,23 @@ game.HiveEntity = me.ObjectEntity.extend({
 
 	this.maxTimer = settings.TimeLimit;
 	this.maxSpawn = settings.BirthRate;
-	this.timer = this.maxTimer;
-	this.spawn = this.maxSpawn;
+	game.data.timer = this.maxTimer;
+	game.data.spawn = this.maxSpawn;
+
+	new game.BeeEntity(this.pos.x,this.pos.y, settings);
     },
 
 	update: function(dt) {
 		// timer counts down and spawns a bee, which initially is idle.
+		game.data.spawn -= dt;
+		if(game.data.spawn <= 0 ) {
+			new game.BeeEntity(this.pos.x,this.pos.y, settings);
+			game.data.spawn = this.maxSpawn;
+		}
+		game.data.timer -= dt;
+		if(game.data.timer <= 0 ) {
+			// level failed!
+		}
 	}
 });
 
@@ -149,4 +160,47 @@ game.FlowerEntity = me.CollectableEntity.extend({
 		}
 	}
 });
+
+
+/* ---------------------------
+player bee
+--------------------------- */
+game.BeeEntity = me.ObjectEntity.extend({
+	init: function(x,y, settings) {
+		this.parent(x, y, settings);
+		this.setVelocity( 3, 15);
+		me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+	},
+	update: function(dt) {
+		if(me.input.isKeyPressed('left')) {
+			this.flipX(true);
+			this.vel.x-=this.accel.x * me.timer.tick;
+		} else if( me.input.isKeyPressed('right')) {
+			this.flipX(false);
+			this.vel.x=this.accel.x *me.timer.tick;
+		} else {
+			this.vel.x=0;
+		}
+		if(me.input.isKeyPressed('up')) {
+			this.vel.y-=this.accel.y * me.timer.tick;
+		} else if( me.input.isKeyPressed('down')) {
+			this.vel.y=this.accel.y *me.timer.tick;
+		} else {
+			this.vel.y=0;
+		}
+		this.updateMovement();
+
+		if(this.vel.x!=0 || this.vel.y!=0) {
+			// update animation
+			this.parent(dt);
+			return true;
+		}
+		// no animation update and no movement.
+		return false;
+	},
+
+
+});
+
+
 
