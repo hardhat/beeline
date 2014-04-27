@@ -1,7 +1,7 @@
 game.PlayScreen = me.ScreenObject.extend({
 	init: function() {
-		me.pool.register("HiveEntity", game.HiveEntity);
-		me.pool.register("BearEntity", game.BearEntity);
+//		me.pool.register("HiveEntity", game.HiveEntity);
+//		me.pool.register("BearEntity", game.BearEntity);
 	},
 
 	/**
