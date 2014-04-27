@@ -9,6 +9,8 @@ game.resources = [
     // Credits and Instructions Screen
     {name: "info_screen",          type:"image", src: "data/img/gui/info_screen.png"},
     
+    //Black background
+    {name: "black_screen",          type:"image", src: "data/img/gui/blackframe.png"},
 	/* Graphics. 
 	 * @example
 	 * {name: "example", type:"image", src: "data/img/example.png"},
@@ -23,7 +25,7 @@ game.resources = [
 	{name: "flower60", type:"image", src: "data/img/flower60.png"},
 	{name: "flower80", type:"image", src: "data/img/flower80.png"},
 	{name: "flower100", type:"image", src: "data/img/flower100.png"},
-
+	{name: "hud", type:"image", src: "data/img/gui/HUD_1.png"},
 
 	/* Atlases 
 	 * @example
@@ -49,6 +51,16 @@ game.resources = [
 	 * @example
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/"}
 	 */
-//	{name: "Click", type: "audio", src: "data/sfx/"}
+	{name: "Click", type: "audio", src: "data/sfx/"},
+	
+	{name: "Bear_Harvest", type: "audio", src: "data/sfx/"},
+	
+	{name: "Bear_Near", type: "audio", src: "data/sfx/"},
+	
+	{name: "Bear_Retreat", type: "audio", src: "data/sfx/"},
+	
+	{name: "Gardener_Bee", type: "audio", src: "data/sfx/"},
+	
+	{name: "Soldier_Bee", type: "audio", src: "data/sfx/"}
 
 ];

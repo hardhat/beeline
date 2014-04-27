@@ -81,13 +81,13 @@ game.TitleScreen = me.ScreenObject.extend({
             	if (playBox.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y)){
                 	// play something on tap / enter
                 	// this will unlock audio on mobile devices
-               	 	me.audio.play("cling");
-                	me.state.change(me.state.PLAY);
+               	 	me.audio.play("Click");
+                  	me.state.change(me.state.PLAY);
                 } else if (creditsBox.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y)) {
-                	me.audio.play("cling");
+                	me.audio.play("Click");
                 	me.state.change(me.state.CREDITS);
                 } else if (instructionsBox.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y)) {
-                	me.audio.play("cling");
+                	me.audio.play("Click");
                 	me.state.change(me.state.USER);
                 	
                 }

@@ -9,7 +9,7 @@ var game = {
 		// hive cap
 		hcap : 5,
 		// idle bees
-		idle : 0,
+		idle : 5,
 		// exploring bees
 		explore : 0,
 		// attacking bees
