@@ -9,6 +9,8 @@ game.resources = [
     // Credits and Instructions Screen
     {name: "info_screen",          type:"image", src: "data/img/gui/info_screen.png"},
     
+    //Black background
+    {name: "black_screen",          type:"image", src: "data/img/gui/blackframe.png"},
 	/* Graphics. 
 	 * @example
 	 * {name: "example", type:"image", src: "data/img/example.png"},
@@ -17,7 +19,7 @@ game.resources = [
 	{name: "bear_sprite", type:"image", src: "data/img/bear_sprite.png"},
 	{name: "bee_sprite", type:"image", src: "data/img/bee_sprite.png"},
 	{name: "hive", type:"image", src: "data/img/hive_sprite.png"},
-
+	{name: "hud", type:"image", src: "data/img/gui/HUD_1.png"},
 
 	/* Atlases 
 	 * @example

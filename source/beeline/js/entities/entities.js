@@ -98,4 +98,3 @@ game.BearEntity = me.ObjectEntity.extend({
     }
 });
 
-bgr

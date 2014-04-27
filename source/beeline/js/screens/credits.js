@@ -9,8 +9,7 @@ game.CreditScreen = me.ScreenObject.extend({
 		    new me.SpriteObject (
 		        0,0, 
 		        me.loader.getImage('info_screen')
-		    ),
-		    1
+		    ),1
 		);
 		
 		me.game.world.addChild(new (me.Renderable.extend ({
@@ -34,12 +33,12 @@ game.CreditScreen = me.ScreenObject.extend({
 			        this.font.draw (context, "Sound:", 153, 245);
 			        menu = this.font.measureText(context, menub);
 			        this.font.draw (context, "MENU", 20, 440);
-			        this.font.setFont("Comic Sans MS", 22, "#fff");
+			        this.font.setFont("Chalkboard SE", 22, "#fff");
 			        this.font.draw (context, "Dale Wick and Daniel Sutherland", 165, 135);
 			        this.font.draw (context, "Melissa Davidson, Youkie Koizumi, Jeffrey Wick", 165, 205);
 			        this.font.draw (context, "Andrew Kropel, Marty Bernie", 165, 275);
 			    },
-			})), 2);
+			})),2);
 			
 		me.input.bindKey(me.input.KEY.ENTER, "enter", true);
 		me.input.bindPointer(me.input.mouse.LEFT, me.input.KEY.ENTER);
@@ -49,7 +48,7 @@ game.CreditScreen = me.ScreenObject.extend({
 		    if (menuBox.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y)){
 		    	// play something on tap / enter
 		    	// this will unlock audio on mobile devices
-		    	me.audio.play("cling");
+		    	me.audio.play("Click");
 		    	me.state.change(me.state.MENU);
 		    }
 		    }
