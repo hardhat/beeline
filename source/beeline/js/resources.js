@@ -29,7 +29,11 @@ game.resources = [
 	{name: "isometric", type: "tmx", src: "data/map/isometric.tmx"},
 
 //	Background music. 
-	{name: "beeline_bgm", type: "audio", src: "data/bgm/"}
+	{name: "beeline_bgm", type: "audio", src: "data/bgm/"},
+	
+//	Background menu music. 
+	{name: "Beeline_Menu", type: "audio", src: "data/bgm/"},
+	
 	 	
 
 	/* Sound effects. 

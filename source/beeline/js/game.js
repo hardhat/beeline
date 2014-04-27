@@ -34,7 +34,7 @@ var game = {
 	
 
 	// Initialize the audio.
-	me.audio.init("mp3, ogg");
+	me.audio.init("wav, mp3, ogg");
 
 	// Set a callback to run when loading is complete.
 	me.loader.onload = this.loaded.bind(this);
@@ -53,6 +53,7 @@ var game = {
 		me.state.set(me.state.CREDITS, new game.CreditScreen());
 		me.state.set(me.state.USER, new game.InstructionsScreen());
 		// Go to title screen.
+		me.audio.playTrack("Beeline_Menu", 0.5);
 		me.state.change(me.state.MENU);
 	}
 };

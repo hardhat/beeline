@@ -9,6 +9,7 @@ game.PlayScreen = me.ScreenObject.extend({
 	 */
 	onResetEvent: function() {
 		// load a level
+		me.audio.stopTrack();
 		me.audio.playTrack("beeline_bgm", 0.5);
 		me.levelDirector.loadLevel("isometric");
 
