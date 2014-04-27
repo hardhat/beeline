@@ -1,7 +1,7 @@
 /* ---------------------------------
 the hive, the source of everything good in the game. 
 --------------------------- */
-game.HiveEntity = me.ObjectEntity.extend({
+game.OldeHiveEntity = me.ObjectEntity.extend({
     init: function(x, y, settings) {
 
 
@@ -165,8 +165,14 @@ game.FlowerEntity = me.CollectableEntity.extend({
 /* ---------------------------
 player bee
 --------------------------- */
-game.BeeEntity = me.ObjectEntity.extend({
+game.HiveEntity = me.ObjectEntity.extend({
 	init: function(x,y, settings) {
+		settings.image="bee_sprite";
+		settings.width=16;
+		settings.height=16;
+		settings.spritewidth=16;
+		settings.spriteheight=16;
+
 		this.parent(x, y, settings);
 		this.setVelocity( 3, 15);
 		me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);

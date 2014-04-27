@@ -54,6 +54,11 @@ var game = {
 		me.pool.register("FlowerEntity", game.FlowerEntity);
 		me.sys.gravity = 0;
 	
+
+		me.input.bindKey(me.input.KEY.LEFT, "left");
+		me.input.bindKey(me.input.KEY.RIGHT, "right");
+		me.input.bindKey(me.input.KEY.UP, "up");
+		me.input.bindKey(me.input.KEY.DOWN, "down");
 	
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.PLAY, new game.PlayScreen());
