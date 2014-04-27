@@ -1,9 +1,4 @@
 game.PlayScreen = me.ScreenObject.extend({
-	init: function() {
-//		me.pool.register("HiveEntity", game.HiveEntity);
-//		me.pool.register("BearEntity", game.BearEntity);
-	},
-
 	/**
 	 *  action to perform on state change
 	 */
@@ -15,6 +10,10 @@ game.PlayScreen = me.ScreenObject.extend({
 
 		// reset the score
 		game.data.score = 0;
+		game.data.honey = 0;
+		game.data.idle = 0;
+		game.data.harvest = 0;
+		game.data.attack = 0;
 
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();

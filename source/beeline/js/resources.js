@@ -17,6 +17,12 @@ game.resources = [
 	{name: "bear_sprite", type:"image", src: "data/img/bear_sprite.png"},
 	{name: "bee_sprite", type:"image", src: "data/img/bee_sprite.png"},
 	{name: "hive", type:"image", src: "data/img/hive_sprite.png"},
+	{name: "flower0", type:"image", src: "data/img/flower0.png"},
+	{name: "flower20", type:"image", src: "data/img/flower20.png"},
+	{name: "flower40", type:"image", src: "data/img/flower40.png"},
+	{name: "flower60", type:"image", src: "data/img/flower60.png"},
+	{name: "flower80", type:"image", src: "data/img/flower80.png"},
+	{name: "flower100", type:"image", src: "data/img/flower100.png"},
 
 
 	/* Atlases 

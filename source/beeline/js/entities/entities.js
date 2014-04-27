@@ -11,7 +11,12 @@ game.HiveEntity = me.ObjectEntity.extend({
 	//this.type = me.game.BASE_OBJECT;
 
 	// show the hive initially.
-	me.game.viewport.moveTo( x,y);
+	me.game.viewport.moveTo(x-3,y-3);
+
+	this.maxTimer = settings.TimeLimit;
+	this.maxSpawn = settings.BirthRate;
+	this.timer = this.maxTimer;
+	this.spawn = this.maxSpawn;
     },
 
 	update: function(dt) {
