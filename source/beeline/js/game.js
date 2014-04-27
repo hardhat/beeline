@@ -43,6 +43,7 @@ var game = {
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.PLAY, new game.PlayScreen());
 		me.state.set(me.state.CREDITS, new game.CreditScreen());
+		me.state.set(me.state.USER, new game.InstructionsScreen());
 		// Go to title screen.
 		me.state.change(me.state.MENU);
 	}

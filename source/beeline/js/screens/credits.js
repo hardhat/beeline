@@ -3,6 +3,8 @@ game.CreditScreen = me.ScreenObject.extend({
 	 *  action to perform on state change
 	 */
 	onResetEvent: function() {	
+		var menub = "MENU";
+		menu = new Object();
 		me.game.world.addChild(
 		    new me.SpriteObject (
 		        0,0, 
@@ -16,7 +18,7 @@ game.CreditScreen = me.ScreenObject.extend({
 			    init : function() {
 			        this.parent(new me.Vector2d(0, 0), me.game.viewport.width, me.game.viewport.height);
 			        // font for the scrolling text
-			        this.font = new me.Font("beeFont", 12, "#fff");
+			        this.font = new me.Font("beeFont", 32, "#fff");
 			    },
 
 			    update : function (dt) {
@@ -24,8 +26,16 @@ game.CreditScreen = me.ScreenObject.extend({
 			    },
 			     
 			    draw : function (context) {
-			        this.font.draw (context, "I MADE THIS MUAHAHAHA", 20, 40);
-			        this.font.draw (context, "A FEW OTHER PEOPLE WERE INVOLVED", 20, 140);
+			        this.font.draw (context, "Credits:", 20, 20);
+			        this.font.draw (context, "Programmers:", 33, 65);
+			        this.font.setFont("beeFont", 22, "#fff");
+			        this.font.draw (context, "Dale Wick and Daniel Sutherland", 45, 95);
+			        this.font.draw (context, "Graphics:", 33, 135);
+			        this.font.draw (context, "Melissa Davidson, Youkie Koizumi, Jeffrey Wick", 45, 165);
+			        this.font.draw (context, "Sound:", 33, 205);
+			        this.font.draw (context, "Andrew Kropel, Marty Bernie", 45, 235);
+			        menu = this.font.measureText(context, menub);
+			        this.font.draw (context, "MENU", 20, 440);
 			    },
 			})), 2);
 			
@@ -33,10 +43,13 @@ game.CreditScreen = me.ScreenObject.extend({
 		me.input.bindPointer(me.input.mouse.LEFT, me.input.KEY.ENTER);
 		this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
 		    if (action === "enter") {
-		        // play something on tap / enter
-		        // this will unlock audio on mobile devices
-		        me.audio.play("cling");
-		        me.state.change(me.state.PLAY);
+		    menuBox = new me.Rect(new me.Vector2d(20, 440), menu.width, menu.height);
+		    if (menuBox.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y)){
+		    	// play something on tap / enter
+		    	// this will unlock audio on mobile devices
+		    	me.audio.play("cling");
+		    	me.state.change(me.state.MENU);
+		    }
 		    }
 		});
 		
