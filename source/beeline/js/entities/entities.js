@@ -26,7 +26,7 @@ an enemy Entity
 game.BearEntity = me.ObjectEntity.extend({
     init: function(x, y, settings) {
         // define this here instead of tiled
-        settings.image = "bear_right";
+        settings.image = "bear_sprite";
            
         // save the area size defined in Tiled
         var width = settings.width;

@@ -14,7 +14,7 @@ game.resources = [
 	 * {name: "example", type:"image", src: "data/img/example.png"},
 	 */
 	{name: "isometricmap", type:"image", src: "data/img/isometricmap.png"},
-	{name: "bear_right", type:"image", src: "data/img/bear_sprite.png"},
+	{name: "bear_sprite", type:"image", src: "data/img/bear_sprite.png"},
 	{name: "bee_sprite", type:"image", src: "data/img/bee_sprite.png"},
 	{name: "hive", type:"image", src: "data/img/hive_sprite.png"},
 

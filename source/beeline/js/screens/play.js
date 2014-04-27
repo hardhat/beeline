@@ -14,10 +14,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.levelDirector.loadLevel("isometric");
 
 		// reset the score
-		me.game.data.score = 0;
-
-		// Look at the centre of the map.
-		me.game.viewport.moveTo(10,10);
+		game.data.score = 0;
 
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
