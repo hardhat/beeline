@@ -5,6 +5,8 @@ game.resources = [
     
     // Title Screen
     {name: "title_screen",          type:"image", src: "data/img/gui/title_screen.jpg"},
+    {name: "goat",          type:"image", src: "data/img/goatonapole.jpg"},
+    {name: "logo",          type:"image", src: "data/img/logo.png"},
     
     // Credits and Instructions Screen
     {name: "info_screen",          type:"image", src: "data/img/gui/info_screen.png"},
