@@ -7,11 +7,17 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.levelDirector.loadLevel("isometric");
 
 		// reset the score
-		game.data.score = 0;
+		me.game.data.score = 0;
+
+		// Look at the centre of the map.
+		me.game.viewport.moveTo(10,10);
 
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);
+
+		me.pool.register("HiveEntity", game.HiveEntity);
+		me.pool.register("BearEntity", game.BearEntity);
 	},
 
 
