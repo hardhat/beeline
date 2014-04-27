@@ -12,7 +12,7 @@ game.HiveEntity = me.ObjectEntity.extend({
 
 	// show the hive initially.
 	me.game.viewport.moveTo( x,y);
-
+    },
 
 	update: function(dt) {
 		// timer counts down and spawns a bee, which initially is idle.

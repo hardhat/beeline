@@ -1,4 +1,9 @@
 game.PlayScreen = me.ScreenObject.extend({
+	init: function() {
+		me.pool.register("HiveEntity", game.HiveEntity);
+		me.pool.register("BearEntity", game.BearEntity);
+	},
+
 	/**
 	 *  action to perform on state change
 	 */
@@ -17,8 +22,6 @@ game.PlayScreen = me.ScreenObject.extend({
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);
 
-		me.pool.register("HiveEntity", game.HiveEntity);
-		me.pool.register("BearEntity", game.BearEntity);
 	},
 
 
