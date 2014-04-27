@@ -15,6 +15,7 @@ game.PlayScreen = me.ScreenObject.extend({
 //		    ),
 //		    1
 //		);
+		var test = false;
 		me.game.world.addChild(new me.SpriteObject(0,0, me.loader.getImage("black_Screen")));
 		me.audio.stopTrack();
 		me.audio.playTrack("beeline_bgm", 0.5);
@@ -32,23 +33,23 @@ game.PlayScreen = me.ScreenObject.extend({
 		this.HUD = new game.HUD.Container();
 //		me.game.world.addChild(new me.SpriteObject(0,0, me.loader.getImage("hud")), Infinity - 1);
 		me.game.world.addChild(this.HUD);
-		
-//		if mouse down
+//		me.game.HUD.Container.addChild(new me.SpriteObject(0,0, me.loader.getImage("hud")), this.z);
+//		if mouse down  <--- no idea how to detect!!!
 //			if mouse is moved less then threshold
 //				click detected
 //			else {
 //				drag detected
 //			}
 //		
-		
+	this.handler2 = me.event.subscribe(me.input.registerPointerEvent("pointerdown", new me.Rect(new me.Vector2d(0,0), 800, 480), function () { test = true;me.audio.play("Click"); }));
 		me.input.bindKey(me.input.KEY.ENTER, "enter", true);
 		me.input.bindPointer(me.input.mouse.LEFT, me.input.KEY.ENTER);
 		this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
 		    if (action === "enter") {
 		    	moveBox = new me.Rect(new me.Vector2d(me.input.mouse.pos.x - 20, me.input.mouse.pos.y - 20), 40, 40);
 		    	me.audio.play("Click");
-		    	while (onmousedown) {
-		    	me.audio.play("Click");
+		    	while (test == true) {
+		    	me.audio.play("Bear_Harvest");
 		    		if (!moveBox.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y)){
 		    			me.audio.play("Click");
 //		    			while (me.input.isKeyPressed("enter")) {

@@ -87,7 +87,7 @@ game.HUD.InfoItem = me.Renderable.extend({
 	 * draw the score
 	 */
 	draw : function (context) {
-		me.game.world.addChild(new me.SpriteObject(0,0, me.loader.getImage("hud")), this.z);
+//		me.game.HUD.Container.addChild(new me.SpriteObject(0,0, me.loader.getImage("hud")), this.z);
 		this.font.draw (context, "H: " + game.data.score, this.pos.x, this.pos.y);
 		this.font.draw (context, "I: " + game.data.idle, this.pos.x, this.pos.y + 40);
 		this.font.draw (context, "E: " + game.data.explore, this.pos.x, this.pos.y + 80);
