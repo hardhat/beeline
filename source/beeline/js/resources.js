@@ -28,6 +28,9 @@ game.resources = [
 	{name: "flower80", type:"image", src: "data/img/flower80.png"},
 	{name: "flower100", type:"image", src: "data/img/flower100.png"},
 	{name: "hud", type:"image", src: "data/img/gui/HUD_1.png"},
+	{name: "hud_types", type:"image", src: "data/img/gui/hud_workers.png"},
+	{name: "hud_honey", type:"image", src: "data/img/gui/hud_honey.png"},
+	{name: "hud_comb", type:"image", src: "data/img/gui/hud_comb.png"},
 
 	/* Atlases 
 	 * @example

@@ -24,8 +24,17 @@ game.HUD.Container = me.ObjectContainer.extend({
 
 		// give a name
 		this.name = "HUD";
-//		me.game.world.addChild(mew SpriteObject(0,0, me.loader.getImage("hud")), 100);
 		
+		hudHoney = new me.SpriteObject(0,0, me.loader.getImage("hud_honey"));
+		hudHoney.floating=true;
+
+		this.addChild(hudHoney);
+		hudComb = new me.SpriteObject(100,0, me.loader.getImage("hud_comb"));
+		hudComb.floating = true;
+		this.addChild(hudComb);
+		hudTypes = new me.SpriteObject(16,90, me.loader.getImage("hud_types"));
+		hudTypes.floating = true;
+		this.addChild(hudTypes);
 		// add our child score object at the top left corner
 		this.addChild(new game.HUD.InfoItem(5, 5));
 	}
@@ -56,6 +65,9 @@ game.HUD.InfoItem = me.Renderable.extend({
 
 		// make sure we use screen coordinates
 		this.floating = true;
+
+		this.z = 1;
+
 	},
 
 	/**
@@ -90,7 +102,6 @@ game.HUD.InfoItem = me.Renderable.extend({
 	 * draw the score
 	 */
 	draw : function (context) {
-//		me.game.HUD.Container.addChild(new me.SpriteObject(0,0, me.loader.getImage("hud")), this.z);
 		this.font.draw (context, "H: " + game.data.score, this.pos.x, this.pos.y);
 		this.font.draw (context, "I: " + game.data.idle, this.pos.x, this.pos.y + 40);
 		this.font.draw (context, "E: " + game.data.explore, this.pos.x, this.pos.y + 80);
