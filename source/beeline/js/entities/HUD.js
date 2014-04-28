@@ -64,6 +64,9 @@ game.HUD.InfoItem = me.Renderable.extend({
 	update : function () {
 		// we don't do anything fancy here, so just
 		// return true if the score has been updated
+		if(me.input.isKeyPressed('esc')) {
+			me.state.change(me.state.MENU);
+		}
 		if (this.score !== game.data.score) {	
 			this.score = game.data.score;
 			return true;
@@ -80,7 +83,7 @@ game.HUD.InfoItem = me.Renderable.extend({
 			this.attack = game.data.attack;
 			return true;
 		}
-		return false;
+		return true;
 	},
 
 	/**
