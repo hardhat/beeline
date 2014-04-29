@@ -15,6 +15,11 @@ game.PlayScreen = me.ScreenObject.extend({
 //		    ),
 //		    1
 //		);
+		me.input.bindKey(me.input.KEY.LEFT, "left");
+		me.input.bindKey(me.input.KEY.RIGHT, "right");
+		me.input.bindKey(me.input.KEY.UP, "up");
+		me.input.bindKey(me.input.KEY.DOWN, "down");
+
 		var test = false;
 		me.game.world.addChild(new me.SpriteObject(0,0, me.loader.getImage("black_Screen")));
 		me.audio.stopTrack();
@@ -71,10 +76,6 @@ game.PlayScreen = me.ScreenObject.extend({
 //		    }
 //		});
 		
-		
-		
-		
-		
 	},
 
 
@@ -82,7 +83,13 @@ game.PlayScreen = me.ScreenObject.extend({
 	 *  action to perform when leaving this screen (state change)
 	 */
 	onDestroyEvent: function() {
-		// remove the HUD from the game world
+		me.input.unbindKey(me.input.KEY.LEFT);
+		me.input.unbindKey(me.input.KEY.RIGHT);
+		me.input.unbindKey(me.input.KEY.UP);
+		me.input.unbindKey(me.input.KEY.DOWN);
+
+
+	// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
 		me.audio.stopTrack();
 	}

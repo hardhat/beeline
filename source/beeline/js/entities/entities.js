@@ -1,31 +1,38 @@
 /* ---------------------------------
 the hive, the source of everything good in the game. 
 --------------------------- */
-game.OldeHiveEntity = me.ObjectEntity.extend({
-    init: function(x, y, settings) {
+game.HiveEntity = me.ObjectEntity.extend({
+    init: function hiveinit(x, y, settings) {
+		this.parent(x,y, settings);
 
+		this.collidable = true;
+		//this.type = me.game.BASE_OBJECT;
 
-	this.parent(x,y, settings);
+		// show the hive initially.
+		me.game.viewport.moveTo(x-3,y-3);
 
-	this.collidable = true;
-	//this.type = me.game.BASE_OBJECT;
-
-	// show the hive initially.
-	me.game.viewport.moveTo(x-3,y-3);
-
-	this.maxTimer = settings.TimeLimit;
-	this.maxSpawn = settings.BirthRate;
-	game.data.timer = this.maxTimer;
-	game.data.spawn = this.maxSpawn;
-
-	new game.BeeEntity(this.pos.x,this.pos.y, settings);
+		this.maxTimer = settings.TimeLimit;
+		this.maxSpawn = settings.Birthrate;
+		game.data.hcap = settings.Capacity;
+		game.data.timer = this.maxTimer;
+		game.data.spawn = this.maxSpawn;
+		game.player={};
+		game.playerActive=false;
+		game.newBee={};
+		game.newBee.settings=settings;
     },
 
-	update: function(dt) {
+	update: function hiveupdate(dt) {
 		// timer counts down and spawns a bee, which initially is idle.
 		game.data.spawn -= dt;
 		if(game.data.spawn <= 0 ) {
-			new game.BeeEntity(this.pos.x,this.pos.y, settings);
+			if( game.playerActive==false) {
+				game.player=new game.PlayerBeeEntity(this.pos.x,this.pos.y, game.newBee.settings);
+				game.player.z=5;
+				me.game.world.addChild(game.player);
+				game.playerActive=true;
+			}
+			
 			game.data.spawn = this.maxSpawn;
 		}
 		game.data.timer -= dt;
@@ -137,7 +144,7 @@ game.FlowerEntity = me.CollectableEntity.extend({
 		}
 	},
 
-	onCollision: function() {
+	onCollision: function(res, obj) {
 		if(this.delay>0) return;
 
 		if(this.energy>0) {
@@ -148,7 +155,6 @@ game.FlowerEntity = me.CollectableEntity.extend({
 			flower[3]="flower60";
 			flower[4]="flower80";
 			flower[5]="flower100";
-
 
 			this.image=flower[this.energy];
 			this.delay=1;
@@ -165,7 +171,7 @@ game.FlowerEntity = me.CollectableEntity.extend({
 /* ---------------------------
 player bee
 --------------------------- */
-game.HiveEntity = me.ObjectEntity.extend({
+game.PlayerBeeEntity = me.ObjectEntity.extend({
 	init: function(x,y, settings) {
 		settings.image="bee_sprite";
 		settings.width=16;
@@ -174,7 +180,7 @@ game.HiveEntity = me.ObjectEntity.extend({
 		settings.spriteheight=16;
 
 		this.parent(x, y, settings);
-		this.setVelocity( 3, 15);
+		this.setVelocity( 5, 5);
 		me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 	},
 	update: function(dt) {
@@ -205,8 +211,4 @@ game.HiveEntity = me.ObjectEntity.extend({
 		return false;
 	},
 
-
 });
-
-
-
