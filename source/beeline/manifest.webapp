@@ -1,10 +1,10 @@
 {
-    "name": "boilerplate",
+    "name": "beeline",
     "launch_path" : "./index.html",
     "version": "1",
     "developer": {
-        "name": "melonjs",
-        "url": "http://www.melonjs.org"
+        "name": "teamsushi",
+        "url": "http://www.teamsushi.org"
     },
     "fullscreen": true
 }
