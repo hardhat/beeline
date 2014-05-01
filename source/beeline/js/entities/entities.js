@@ -181,7 +181,7 @@ game.PlayerBeeEntity = me.ObjectEntity.extend({
 
 		this.parent(x, y, settings);
 		this.setVelocity( 5, 5);
-		me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+//		me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 	},
 	update: function(dt) {
 		if(me.input.isKeyPressed('left')) {

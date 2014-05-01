@@ -38,6 +38,32 @@ game.PlayScreen = me.ScreenObject.extend({
 		this.HUD = new game.HUD.Container();
 //		me.game.world.addChild(new me.SpriteObject(0,0, me.loader.getImage("hud")), Infinity - 1);
 		me.game.world.addChild(this.HUD);
+
+		me.input.registerPointerEvent("pointerdown", me.game.viewport, function (event) {
+			var x=event.gameX;
+			var y=event.gameY;
+			var world = me.game.viewport.localToWorld(x,y);
+			game.data.move=world;
+			var layer = me.game.currentLevel.getLayerByName("background");
+			var tile = layer.getTile(world.x,world.y);
+			if(!isNaN(tile)){
+				//TODO:  do something with tile
+				layer.setTile(world.x,world.y,12);
+				layer.clearTile(world.x,world.y);
+			}
+		});
+
+		me.input.registerPointerEvent("pointermove", me.game.viewport, function (event) {
+			var x=event.gameX;
+			var y=event.gameY;
+			var world = me.game.viewport.localToWorld(x,y);
+			me.viewport.move(game.data.move.x-world.x,game.data.move.y-world.y);
+			game.data.moveX=event.screenX;
+			game.data.moveY=event.screenY;
+		});
+
+
+
 //		me.game.HUD.Container.addChild(new me.SpriteObject(0,0, me.loader.getImage("hud")), this.z);
 //		if mouse down  <--- no idea how to detect!!!
 //			if mouse is moved less then threshold
@@ -88,6 +114,8 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.input.unbindKey(me.input.KEY.UP);
 		me.input.unbindKey(me.input.KEY.DOWN);
 
+		me.input.releasePointerEvent("pointerdown",me.game.viewport);
+		me.input.releasePointerEvent("pointermove",me.game.viewport);
 
 	// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
