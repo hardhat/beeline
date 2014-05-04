@@ -18,6 +18,7 @@ game.resources = [
 	 * {name: "example", type:"image", src: "data/img/example.png"},
 	 */
 	{name: "isometricmap", type:"image", src: "data/img/isometricmap.png"},
+	{name: "orthogonalmap", type:"image", src: "data/img/orthogonalmap.png"},
 	{name: "bear_sprite", type:"image", src: "data/img/bear_sprite.png"},
 	{name: "bee_sprite", type:"image", src: "data/img/bee_sprite.png"},
 	{name: "hive", type:"image", src: "data/img/hive_sprite.png"},
@@ -43,6 +44,7 @@ game.resources = [
 	 * {name: "example01", type: "tmx", src: "data/map/example01.json"},
  	 */
 	{name: "isometric", type: "tmx", src: "data/map/isometric.tmx"},
+	{name: "orthogonal", type: "tmx", src: "data/map/orthogonal.tmx"},
 
 //	Background music. 
 	{name: "beeline_bgm", type: "audio", src: "data/bgm/"},

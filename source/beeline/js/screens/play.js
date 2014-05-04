@@ -24,7 +24,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.game.world.addChild(new me.SpriteObject(0,0, me.loader.getImage("black_Screen")));
 		me.audio.stopTrack();
 		me.audio.playTrack("beeline_bgm", 0.5);
-		me.levelDirector.loadLevel("isometric");
+		me.levelDirector.loadLevel("orthogonal");
 
 		// reset the score
 		game.data.score = 0;
@@ -38,28 +38,41 @@ game.PlayScreen = me.ScreenObject.extend({
 		this.HUD = new game.HUD.Container();
 //		me.game.world.addChild(new me.SpriteObject(0,0, me.loader.getImage("hud")), Infinity - 1);
 		me.game.world.addChild(this.HUD);
+		game.data.moveActive=false;
 
 		me.input.registerPointerEvent("pointerdown", me.game.viewport, function (event) {
-			var x=event.gameX;
-			var y=event.gameY;
-			var world = me.game.viewport.localToWorld(x,y);
+			var world={};
+			world.x=event.gameWorldX;
+			world.y=event.gameWorldY;
 			game.data.move=world;
-			var layer = me.game.currentLevel.getLayerByName("background");
+			game.data.moveActive=true;
+			var layer = me.game.currentLevel.getLayerByName("fog");
 			var tile = layer.getTile(world.x,world.y);
-			if(!isNaN(tile)){
+			if(tile!=null){
 				//TODO:  do something with tile
-				layer.setTile(world.x,world.y,12);
-				layer.clearTile(world.x,world.y);
+				console.log("Clicked on tile "+tile.tileId);
+				var tx=tile.col;
+				var ty=tile.row;
+				layer.clearTile(tx,ty);
 			}
+			return true;
+		});
+		
+		me.input.registerPointerEvent("pointerup", me.game.viewport, function (event) {
+			game.data.moveActive=false;
+			return true;
 		});
 
 		me.input.registerPointerEvent("pointermove", me.game.viewport, function (event) {
-			var x=event.gameX;
-			var y=event.gameY;
-			var world = me.game.viewport.localToWorld(x,y);
-			me.viewport.move(game.data.move.x-world.x,game.data.move.y-world.y);
-			game.data.moveX=event.screenX;
-			game.data.moveY=event.screenY;
+			if(game.moveActive) {
+				var world={};
+				world.x=event.gameWorldX;
+				world.y=event.gameWorldY;
+				me.viewport.move(game.data.move.x-world.x,game.data.move.y-world.y);
+				game.data.move=world;
+				return true;
+			}
+			return false;
 		});
 
 
