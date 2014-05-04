@@ -41,35 +41,53 @@ game.PlayScreen = me.ScreenObject.extend({
 		game.data.moveActive=false;
 
 		me.input.registerPointerEvent("pointerdown", me.game.viewport, function (event) {
-			var world={};
-			world.x=event.gameWorldX;
-			world.y=event.gameWorldY;
-			game.data.move=world;
+			var page={};
+			page.x=event.screenX;
+			page.y=event.screenY;
+			game.data.move=page;
 			game.data.moveActive=true;
-			var layer = me.game.currentLevel.getLayerByName("fog");
-			var tile = layer.getTile(world.x,world.y);
-			if(tile!=null){
-				//TODO:  do something with tile
-				console.log("Clicked on tile "+tile.tileId);
-				var tx=tile.col;
-				var ty=tile.row;
-				layer.clearTile(tx,ty);
-			}
+			game.data.dragActive=false;
 			return true;
 		});
 		
 		me.input.registerPointerEvent("pointerup", me.game.viewport, function (event) {
+			if(!game.data.dragActive) {
+				var layer = me.game.currentLevel.getLayerByName("fog");
+				var tile = layer.getTile(event.gameWorldX,event.gameWorldY);
+				if(tile!=null){
+					//TODO:  do something with tile
+					console.log("Clicked on fog tile "+tile.tileId);
+					var tx=tile.col;
+					var ty=tile.row;
+					layer.clearTile(tx,ty);
+				} else {
+					layer=me.game.currentLevel.getLayerByName("background");
+					tile=layer.getTile(event.gameWorldX,event.gameWorldY);
+					if(tile!=null) {
+						var tx=tile.col;
+						var ty=tile.row;
+						console.log("Clicked on tileId "+tile.tileId+" @ "+tile.col+", "+tile.row);
+						//if(tile.tileId>=
+						//layer.setTile(tx,ty,tileId);
+					}
+				}
+			}
+
 			game.data.moveActive=false;
+			game.data.dragActive=false;
+
+			
 			return true;
 		});
 
 		me.input.registerPointerEvent("pointermove", me.game.viewport, function (event) {
-			if(game.moveActive) {
-				var world={};
-				world.x=event.gameWorldX;
-				world.y=event.gameWorldY;
-				me.viewport.move(game.data.move.x-world.x,game.data.move.y-world.y);
-				game.data.move=world;
+			if(game.data.moveActive) {
+				var page={};
+				page.x=event.screenX;
+				page.y=event.screenY;
+				me.game.viewport.move(game.data.move.x-page.x,game.data.move.y-page.y);
+				game.data.move=page;
+				game.data.dragActive=true;
 				return true;
 			}
 			return false;
