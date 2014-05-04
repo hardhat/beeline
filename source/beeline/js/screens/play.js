@@ -1,8 +1,25 @@
 game.PlayScreen = me.ScreenObject.extend({
 	init: function() {
-		//TODO?
+		me.game.onLevelLoaded=this.onLevelLoaded.bind(this);
 	},
 
+	onLevelLoaded: function() {
+		game.data.honey = 0;
+		game.data.idle = 0;
+		game.data.harvest = 0;
+		game.data.attack = 0;
+		game.data.unpollinated = 0;
+		var i,j;
+		
+		var layer = me.game.currentLevel.getLayerByName("background");
+		for(j=0;j<layer.row;j++) {
+			for(i=0;i<layer.col;i++) {
+				var tileId = layer.getTileId(i*layer.tileWidth,j*layer.tileHeight);
+				if(tileId==31) game.data.unpollinated++;
+			}
+		}
+	}
+	
 	/**
 	 *  action to perform on state change
 	 */
@@ -24,14 +41,11 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.game.world.addChild(new me.SpriteObject(0,0, me.loader.getImage("black_Screen")));
 		me.audio.stopTrack();
 		me.audio.playTrack("beeline_bgm", 0.5);
-		me.levelDirector.loadLevel("orthogonal");
 
 		// reset the score
 		game.data.score = 0;
-		game.data.honey = 0;
-		game.data.idle = 0;
-		game.data.harvest = 0;
-		game.data.attack = 0;
+		
+		startLevel("orthogonal");
 
 		// add our HUD to the game world
 //		me.game.world.addChild(new me.SpriteObject(0,0, me.loader.getImage("hud")), 2);
@@ -50,6 +64,13 @@ game.PlayScreen = me.ScreenObject.extend({
 			return true;
 		});
 		
+		function gather(layer,fg,tx,ty,tileId) {
+			layer.setTile(tx,ty,tileId);
+			fg.setTile(tx,ty-1,tileId-6);
+			//playSound("gotone");
+			game.data.honey++;
+		}
+		
 		me.input.registerPointerEvent("pointerup", me.game.viewport, function (event) {
 			if(!game.data.dragActive) {
 				var layer = me.game.currentLevel.getLayerByName("fog");
@@ -62,13 +83,25 @@ game.PlayScreen = me.ScreenObject.extend({
 					layer.clearTile(tx,ty);
 				} else {
 					layer=me.game.currentLevel.getLayerByName("background");
+					var fg=me.game.currentLevel.getLayerByName("foreground");
 					tile=layer.getTile(event.gameWorldX,event.gameWorldY);
+					var fgtile=fg.getTile(event.gameWorldX,event.gameWorldY);
+					if(fgtile!=null) { // Get the sticking up part, if applicable.
+						tile=layer.getTile(event.gameWorldX,event.gameWorldY+fgtile.height);
+					}
 					if(tile!=null) {
 						var tx=tile.col;
 						var ty=tile.row;
 						console.log("Clicked on tileId "+tile.tileId+" @ "+tile.col+", "+tile.row);
-						//if(tile.tileId>=
-						//layer.setTile(tx,ty,tileId);
+						if(tile.tileId==31) gather(layer,fg,tx,ty,32);
+						else if(tile.tileId==32) gather(layer,fg,tx,ty,33);
+						else if(tile.tileId==33) gather(layer,fg,tx,ty,43);
+						else if(tile.tileId==43) gather(layer,fg,tx,ty,44);
+						else if(tile.tileId==44) {
+							gather(layer,fg,tx,ty,45);
+							me.audio.play("Flourish3");
+							game.data.
+						}
 					}
 				}
 			}

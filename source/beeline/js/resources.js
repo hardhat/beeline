@@ -1,4 +1,4 @@
-game.resources = [
+	game.resources = [
 
 	// game font
 //    {name: "32x32_font",          type:"image", src: "data/img/font/32x32_font.png"},
@@ -28,10 +28,10 @@ game.resources = [
 	{name: "flower60", type:"image", src: "data/img/flower60.png"},
 	{name: "flower80", type:"image", src: "data/img/flower80.png"},
 	{name: "flower100", type:"image", src: "data/img/flower100.png"},
-	{name: "hud", type:"image", src: "data/img/gui/HUD_1.png"},
 	{name: "hud_types", type:"image", src: "data/img/gui/hud_workers.png"},
 	{name: "hud_honey", type:"image", src: "data/img/gui/hud_honey.png"},
 	{name: "hud_comb", type:"image", src: "data/img/gui/hud_comb.png"},
+	{name: "statusdialog", type:"image", src: "data/img/gui/statusdialog.png"},
 
 	/* Atlases 
 	 * @example
@@ -60,6 +60,12 @@ game.resources = [
 	 */
 	{name: "Click", type: "audio", src: "data/sfx/"},
 	
+	{name: "Flourish3", type: "audio", src: "data/sfx/"},
+
+	{name: "Victory", type: "audio", src: "data/sfx/"},
+
+	{name: "Defeat", type: "audio", src: "data/sfx/"},
+
 	{name: "Bear_Harvest", type: "audio", src: "data/sfx/"},
 	
 	{name: "Bear_Near", type: "audio", src: "data/sfx/"},
