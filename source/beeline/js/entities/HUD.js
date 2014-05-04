@@ -95,7 +95,7 @@ game.HUD.InfoItem = me.Renderable.extend({
 			this.attack = game.data.attack;
 			return true;
 		}
-		return true;
+		return false;
 	},
 
 	/**
