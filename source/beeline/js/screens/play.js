@@ -11,14 +11,16 @@ game.PlayScreen = me.ScreenObject.extend({
 		game.data.unpollinated = 0;
 		var i,j;
 		
+		console.log("Counting unpolinated flowers.");
 		var layer = me.game.currentLevel.getLayerByName("background");
-		for(j=0;j<layer.row;j++) {
-			for(i=0;i<layer.col;i++) {
-				var tileId = layer.getTileId(i*layer.tileWidth,j*layer.tileHeight);
+		for(j=0;j<layer.rows;j++) {
+			for(i=0;i<layer.cols;i++) {
+				var tileId = layer.getTileId(i*layer.tilewidth,j*layer.tileheight);
 				if(tileId==31) game.data.unpollinated++;
 			}
 		}
-	}
+		console.log("Got "+game.data.unpollinated);
+	},
 	
 	/**
 	 *  action to perform on state change
@@ -45,7 +47,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		// reset the score
 		game.data.score = 0;
 		
-		startLevel("orthogonal");
+		me.levelDirector.loadLevel("orthogonal");
 
 		// add our HUD to the game world
 //		me.game.world.addChild(new me.SpriteObject(0,0, me.loader.getImage("hud")), 2);
@@ -99,8 +101,16 @@ game.PlayScreen = me.ScreenObject.extend({
 						else if(tile.tileId==43) gather(layer,fg,tx,ty,44);
 						else if(tile.tileId==44) {
 							gather(layer,fg,tx,ty,45);
-							me.audio.play("Flourish3");
-							game.data.
+							console.log("There are "+game.data.unpollinated+" flowers left.");
+							game.data.unpollinated--;
+							if(game.data.unpollinated>0) {
+								me.audio.play("Flourish3");
+							} else {
+								me.audio.stopTrack();
+								me.audio.play("Victory");
+
+								me.levelDirector.nextLevel();
+							}
 						}
 					}
 				}
