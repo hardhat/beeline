@@ -71,6 +71,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			fg.setTile(tx,ty-1,tileId-6);
 			//playSound("gotone");
 			game.data.honey++;
+			if(tileId!=45) me.audio.play("Click");
 		}
 		
 		me.input.registerPointerEvent("pointerup", me.game.viewport, function (event) {
@@ -83,6 +84,7 @@ game.PlayScreen = me.ScreenObject.extend({
 					var tx=tile.col;
 					var ty=tile.row;
 					layer.clearTile(tx,ty);
+					me.game.repaint();
 				} else {
 					layer=me.game.currentLevel.getLayerByName("background");
 					var fg=me.game.currentLevel.getLayerByName("foreground");
@@ -94,6 +96,7 @@ game.PlayScreen = me.ScreenObject.extend({
 					if(tile!=null) {
 						var tx=tile.col;
 						var ty=tile.row;
+						var redraw=true;
 						console.log("Clicked on tileId "+tile.tileId+" @ "+tile.col+", "+tile.row);
 						if(tile.tileId==31) gather(layer,fg,tx,ty,32);
 						else if(tile.tileId==32) gather(layer,fg,tx,ty,33);
@@ -111,7 +114,11 @@ game.PlayScreen = me.ScreenObject.extend({
 
 								me.levelDirector.nextLevel();
 							}
+						} else {
+							redraw=false;
 						}
+						if(redraw) me.game.repaint();
+
 					}
 				}
 			}
@@ -120,7 +127,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			game.data.dragActive=false;
 
 			
-			return true;
+			return false;
 		});
 
 		me.input.registerPointerEvent("pointermove", me.game.viewport, function (event) {
@@ -128,9 +135,18 @@ game.PlayScreen = me.ScreenObject.extend({
 				var page={};
 				page.x=event.screenX;
 				page.y=event.screenY;
-				me.game.viewport.move(game.data.move.x-page.x,game.data.move.y-page.y);
-				game.data.move=page;
-				game.data.dragActive=true;
+				var dx=game.data.move.x-page.x;
+				var dy=game.data.move.y-page.y;
+				var dist=dx*dx+dy*dy;
+
+				if(dist>100 || game.data.dragActive) {
+					me.game.viewport.move(game.data.move.x-page.x,game.data.move.y-page.y);
+					if(game.data.move.x-page.x!=0 || game.data.move.y-page.y!=0) {
+						me.game.repaint();
+					}
+					game.data.move=page;
+					game.data.dragActive=true;
+				}
 				return true;
 			}
 			return false;
