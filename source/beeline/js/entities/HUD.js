@@ -102,12 +102,13 @@ game.HUD.InfoItem = me.Renderable.extend({
 	 * draw the score
 	 */
 	draw : function (context) {
-		this.font.draw (context, "H: " + game.data.score, this.pos.x, this.pos.y);
+		this.font.draw (context, "H: " + game.data.honey, this.pos.x, this.pos.y);
 		this.font.draw (context, "I: " + game.data.idle, this.pos.x, this.pos.y + 40);
 		this.font.draw (context, "E: " + game.data.explore, this.pos.x, this.pos.y + 80);
 		this.font.draw (context, "A: " + game.data.attack, this.pos.x, this.pos.y + 120);
-		this.font.draw (context, "Cap: " + game.data.hcap +"/20", this.pos.x + 120, this.pos.y);
-		this.font.draw (context, "T: " + (game.data.idle + game.data.explore + game.data.attack) + "/" + game.data.hcap, this.pos.x, this.pos.y + 160);
+		this.font.draw (context, "Pollen Left: " + game.data.unpollinated, this.pos.x + 120, this.pos.y);
+		this.font.draw (context, "T: " + (game.data.idle + game.data.explore + game.data.attack) + "/20", this.pos.x, this.pos.y + 160);
+		this.font.draw (context, "Bee in " + Math.ceil(game.data.spawn) + " seconds", this.pos.x + 120, this.pos.y+40);
 	}
 
 });
